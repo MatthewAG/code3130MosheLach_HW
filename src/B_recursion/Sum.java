@@ -1,3 +1,5 @@
+package B_recursion;
+
 public class Sum {
     public static double sum(double[] arr) {
         return sum(arr, 0);
