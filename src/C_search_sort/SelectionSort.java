@@ -32,7 +32,7 @@ for an array of length n.
 import java.util.Arrays;
 
 public class SelectionSort {
-    public static void main(String[] args) {
+    static void main() {
         int[] nums = {12, 123, 1, 28, 183, 16};
         System.out.println("Before: " + Arrays.toString(nums));
         selectionSort(nums);

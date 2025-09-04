@@ -10,7 +10,7 @@ two subarrays around the pivot. Don't do anything to a subarray of length
  */
 
 public class QuickSort {
-    public static void main(String[] args) {
+    static void main() {
         int[] arr = {2, 3, 0, 5, 6, 1, -2, 3, 14, 12};
         quickSort(arr);
     }
@@ -29,18 +29,15 @@ public class QuickSort {
         }
     }
 
-    // Chooses a pivot element and partitions arr (from lowIndex through highIndex)
-    // around the pivot: all elements less than the pivot will be placed to the left
-    // of the pivot, and all elements greater than (or equal to) the pivot will be
-    // placed to the right of the pivot.
-    // The method returns the index of the pivot element.
+    // Chooses arr[highIndex] as the "pivot" element, and partitions arr (from lowIndex
+    // through highIndex) around the pivot: all elements <= pivot are placed to the left
+    // of the pivot, and all elements > pivot are placed to the right of the pivot. So
+    // we end up with the following between lowIndex and highIndex:
+    // +-----------------------------------------------------
+    // |  elements <= pivot  |  pivot  |  elements > pivot  |
+    // ------------------------------------------------------
+    // The method returns the updated index of the pivot element.
     public static int partition(int[] arr, int lowIndex, int highIndex) {
-        return 0; // TODO
-    }
-
-    private static void swap(int[] a, int i1, int i2) {
-        int temp = a[i1];
-        a[i1] = a[i2];
-        a[i2] = temp;
+        throw new UnsupportedOperationException("out of scope for 3130");
     }
 }

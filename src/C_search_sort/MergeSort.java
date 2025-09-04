@@ -27,7 +27,7 @@ third merge:    {14,  23,  27,  32,  41,  58,  76,  85}
  */
 
 public class MergeSort {
-    public static void main(String[] args) {
+    static void main() {
         int[] list = {32, 14, 27, 76, 23, 41, 85, 58};
         mergeSort(list);
     }
@@ -70,8 +70,8 @@ public class MergeSort {
             }
         }
 
-        // at this point, we've reach the end of either arr1 or arr2
-        // but we don't know which array has remaining elements
+        // at this point, we've reached the end of either arr1 or arr2,
+        // but we don't know which array has the remaining elements
 
         // get any remaining elements from arr1
         while (index1 < arr1.length) {

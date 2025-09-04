@@ -30,10 +30,6 @@ What is the worst-case scenario?
  */
 
 public class BubbleSort {
-    public static void main(String[] args) {
-        int[] arr = {2, 3, 2, 5, -2, 3, 14, 12};
-    }
-
     public static void bubbleSort(int[] arr) {
         // perform n - 1 passes
         for (int i = 0; i < arr.length - 1; i++) {

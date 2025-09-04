@@ -17,7 +17,7 @@ In insertion sort, we always make n - 1 passes.
  */
 
 public class InsertionSort {
-    public static void main(String[] args) {
+    static void main() {
         int[] arr = {1, 9, 4, 6, 5, -4};
         insertionSort(arr);
     }
