@@ -162,36 +162,6 @@ void m8(int n) {
     IO.println(sum);
 }
 
-// O(1)
-double middle(ArrayList<Double> list) {
-    return list.get(list.size() / 2);
-}
-
-/*
-Running times of ArrayList methods and constructor:
-- new ArrayList(): O(1)
-- get(int index): O(1)
-- add(E element): O(1)
-- add(int index, E element): O(n)
-- remove(Object o): O(n)
-- remove(int index): O(n)
-where n is the size of the ArrayList.
-*/
-// n + n*(n + n) = 2n^2 + n
-// O(n^2)
-void m9(int n) {
-    List<Integer> list1 = new ArrayList<>();
-    for (int i = 0; i < n; i++) { // n times
-        list1.add(i); // constant time
-    }
-
-    List<Integer> list2 = new ArrayList<>();
-    for (int i = 0; i < n; i++) { // n times
-        list2.add(0, list1.get(0)); // linear time
-        list1.remove(0); // linear time
-    }
-}
-
 /*
 approximately log base 3 of n
 which is O(log n)
