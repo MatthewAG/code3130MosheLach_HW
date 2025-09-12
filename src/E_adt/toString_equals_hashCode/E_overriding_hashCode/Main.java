@@ -16,6 +16,11 @@ public class Main {
 
         // If we had not overridden the hashCode method in the Student class,
         // in violation of the specification inherited from the Object class,
-        // they would almost certainly have had three different hashCode results.
+        // they would almost certainly have had three different hash codes.
+
+        Student s4 = new Student("John Smith", 234);
+        IO.println(s4.hashCode());
+        // This hash code is (very likely) different from the earlier one,
+        // since we wrote the ideal form of the hashCode method.
     }
 }

@@ -1,14 +1,17 @@
 package E_adt.set;
 
 /**
- * A capacity-bound CharSet.
+ * A CharSet whose elements are stored in a fixed-length array.
  */
 public class ArrayCharSet implements CharSet {
-    // Representation: the characters are stored in an array.
-    // The capacity is the array's length.
-    // The elements are stored at indexes 0 through size - 1.
-    // For example, if size is 3, the elements are stored at indexes 0, 1, and 2.
-    // We don't care about what's in the array at index size and beyond.
+    /*
+    Representation: the characters are stored in an array.
+    The capacity is the array's length.
+    The elements are stored at indexes 0 through (size - 1).
+    For example, if size is 3, the elements are stored at indexes 0, 1, and 2.
+    We only care about what's at indexes 0 through (size - 1);
+    we don't care about what's at index size and beyond.
+    */
 
     private final char[] chars;
     private int size;
@@ -40,11 +43,18 @@ public class ArrayCharSet implements CharSet {
         if (index < 0) {
             return false;
         } else {
-            // Copy the last character to index, thus replacing the element
-            // that we wish to remove.
-            // THis changes the order of the elements, but that's ok in a set.
-            chars[index] = chars[size - 1];
+            chars[index] = chars[size - 1]; // replace ch with the last character
             size--;
+
+            /*
+            Note 1: We just changed the order of the elements, but that's OK since
+            order doesn't matter in a set.
+
+            Note 2: The array now contains two occurrences of the same character:
+            chars[index] == chars[size]. But that's OK since we only care about
+            what's at indexes 0 through (size - 1).
+            */
+
             return true;
         }
     }

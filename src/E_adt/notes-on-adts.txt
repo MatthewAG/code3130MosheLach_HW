@@ -64,6 +64,10 @@ The following are ADTs:
   does not specify a specific implementation
     - E.g., String, StringBuilder
 
+In the current folder, there are two subfolders with examples of ADTs.
+- Distance is an ADT, but DistanceM and DistanceK are not (they are *implementations* of an ADT).
+- CharSet is an ADT, but StringCharSet and ArrayCharSet are not (they are *implementations* of an ADT).
+
 ============================ interfaces and ADTs =================================
 
 Java's interface is a useful language mechanism for expressing an ADT. Reasons:

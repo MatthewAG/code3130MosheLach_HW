@@ -1,7 +1,8 @@
 package E_adt.set;
 
 /**
- * A CharSet with effectively unlimited capacity (
+ * A CharSet whose elements are stored in a String. The capacity is theoretically unlimited;
+ * in reality, though, the capacity is an int, so it can't go above Integer.MAX_VALUE.
  */
 public class StringCharSet implements CharSet {
     private String s = "";

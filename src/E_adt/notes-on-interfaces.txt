@@ -79,31 +79,3 @@ Question: What happens if a class C1 inherits a method from both another class C
 and an interface I?
 
 Answer: C2's version of the method wins, unless C2 overrides it.
-
-
-Semantics of an interface:
-1. The specification of an ADT with multiple potential implementations that have
-   the same external behavior.
-   Example: Temperature, implemented by TemperatureC and TemperatureF. TemperatureC
-   and TemperatureF objects can be used interchangeably, since they have the same
-   external behavior, though their implementation details differ.
-2. The specification of an ADT with multiple potential implementations that may
-   have different behavior.
-   Example: Shape, implemented by Circle and Rectangle. A Circle cannot be used in
-   place of a Rectangle, and vice versa, though they both are kinds of Shape.
-3. The specification of a common property or behavior that is exhibited by many
-   non-related types of objects. For example, consider:
-   class Animal {}
-   interface Edible {}
-   class Chicken extends Animal implements Edible {}
-   class Apple implements Edible {}
-   It doesn't make sense for Chicken and Apple to have a common superclass, since
-   they don't have much in common. However, they both have the property of being edible.
-   So we can have both Chicken and Apple implement an Edible interface.
-   Question: why not just make Edible a class instead of an interface?
-   Answer: If Edible would be a class, then Chicken wouldn't be able to inherit from
-   both Animal and Edible.
-   Question: why not Animal inherit from Edible?
-   Answer: not all animals are considered edible.
-   Another example: Comparable<T>, which is implemented by classes such as String,
-   LocalDate, Integer, File, etc. We will discuss Comparable in detail later.

@@ -1,19 +1,11 @@
 package E_adt.distance;
 
-class DistanceM implements Distance {
-    private final double miles;
-
-    DistanceM(double miles) {
-        this.miles = miles;
-    }
-
-    @Override
-    public double miles() {
-        return miles;
-    }
-
+// A package-private record; clients do not need to know of its existence.
+// In this implementation, we store the temperature in miles form,
+// and the kilometers() method performs a conversion.
+record DistanceM(double miles) implements Distance {
     @Override
     public double kilometers() {
-        return 0; // TODO
+        return miles * MI_KM_CONVERSION_CONSTANT;
     }
 }

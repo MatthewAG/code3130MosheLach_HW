@@ -4,8 +4,11 @@ interface Shape {
     double area();
     double perimeter();
 
+    // A default method, that is, a non-abstract instance method in an interface.
     default void printInfo() {
         IO.println("area = " + area() + ", perimeter = " + perimeter());
+        // Notice that a non-abstract method can call an abstract method! This works
+        // because implementing classes are required to override all abstract methods.
     }
 }
 
