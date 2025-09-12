@@ -5,9 +5,12 @@ record Point(int x, int y) {}
 public class RecordDemo {
     void main() {
         Point p = new Point(5, 10);
-        IO.println(p.x());
-        IO.println(p.y());
-        IO.println(p);
+        IO.println(p.x()); // 5
+        IO.println(p.y()); // 10
+        IO.println(p); // Point[x=5, y=10]
+
+        Point other = new Point(5, 10);
+        IO.println(p.equals(other)); // true
     }
 }
 

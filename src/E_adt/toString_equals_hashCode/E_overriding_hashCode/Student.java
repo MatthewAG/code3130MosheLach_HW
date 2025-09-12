@@ -18,12 +18,7 @@ public class Student {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof Student) {
-            Student other = (Student) o;
-            return this.name.equals(other.name) && this.id == other.id;
-        } else {
-            return false;
-        }
+        return o instanceof Student other && this.name.equals(other.name) && this.id == other.id;
     }
 
     /*
@@ -42,7 +37,7 @@ public class Student {
     This method is found in the Object class.
     That version generally returns distinct hash codes for distinct
     objects, even if we have overridden equals to consider those distinct objects equal.
-    Therefore, we are supposed to override hasCode whenever we override equals.
+    Therefore, we are supposed to override hashCode whenever we override equals.
 
     The most important property that a hashCode method must
     have is that equal objects must have equal hash codes.
