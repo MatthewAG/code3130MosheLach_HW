@@ -38,4 +38,18 @@ public interface Distance {
         return new DistanceK(kilometers);
         // or: new DistanceM(kilometers / MI_KM_CONVERSION_CONSTANT);
     }
+
+    /**
+     * Returns a Distance parsed from the provided distance string.
+     * @param distanceString a String consisting of a number followed by "mi" or "km" and no spaces
+     */
+    static Distance parse(String distanceString) {
+        if (distanceString.endsWith("mi")) {
+            return ofMiles(Double.parseDouble(distanceString.substring(0, distanceString.length() - 2)));
+        } else if (distanceString.endsWith("km")) {
+            return ofKilometers(Double.parseDouble(distanceString.substring(0, distanceString.length() - 2)));
+        } else {
+            throw new IllegalArgumentException("invalid distance string: " + distanceString);
+        }
+    }
 }

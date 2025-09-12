@@ -2,7 +2,7 @@ package C_search_sort;
 
 /*
 Idea: pick an element to be the "pivot" and rearrange the other
-elements around the pivot: all elements smaller than or equal to the pivot
+elements around the pivot: all elements less than or equal to the pivot
 go to the left of the pivot, and all elements greater than the pivot
 go to the right of the pivot. Keep doing this recursively for each of the
 two subarrays around the pivot. Don't do anything to a subarray of length
