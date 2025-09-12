@@ -1,16 +1,21 @@
-Records, classes, abstract classes, and interfaces are mechanisms for defining new types.
+Records, classes, abstract classes, and interfaces are mechanisms
+for defining new types.
 
-Specification of a type: The name of a type, its method headers, and its Javadoc comments.
+A type consists of:
+- specification: a type's name, method headers, and Javadoc comments.
+- implementation: instance fields and method bodies.
 
-Implementation of a type: instance fields and method bodies.
+A record, class, or abstract class each combines specification and
+implementation into a single unit.
 
-A record, class, or abstract class each combines specification and implementation into a single unit.
-
-By contrast, an interface usually consists of just specification. (It can have a limited form of implementation as well.)
+By contrast, an interface usually consists of just specification.
+(It can have a limited form of implementation as well.)
 
 Interface vs. (abstract) class:
-1. An interface cannot have instance fields or constructors. But a class, even an abstract one, can have instance fields and constructors.
-2. A class can directly inherit from multiple interfaces. But a class cannot directly inherit from multiple classes, even if they are abstract.
+1. An interface cannot have instance fields or constructors. But a class,
+   even an abstract one, can have instance fields and constructors.
+2. A class can directly inherit from multiple interfaces. But a class
+   cannot directly inherit from multiple classes, even if they are abstract.
    Example:
    abstract class A1 {}
    abstract class A2 {}
@@ -19,27 +24,39 @@ Interface vs. (abstract) class:
    class C extends A1, A2 {} // illegal
    class C implements I1, I2 {} // legal and common
    class C extends A1 implements I1, I2 {} // also legal
-3. In an interface, methods are implicitly public unless marked as private. In a class, methods are not public by default.
-4. In an interface, instance methods are implicitly abstract, unless marked as "default". In a class, instance methods are implicitly non-abstract, unless marked as abstract.
-5. In an interface, all fields are implicitly public static final. This is, of course, not the case in a class.
-5. Before Java 8, interfaces were not allowed to have non-abstract methods, while classes, even abstract ones, could. Nowadays, however, interfaces can contain non-abstract methods, whether static or instance.
+3. In an interface, methods are implicitly public unless marked as private.
+   In a class, methods are not public by default; instead they are package-private.
+4. In an interface, instance methods are implicitly abstract, unless marked
+   as "default". In an abstract class, instance methods are implicitly
+   non-abstract, unless marked as abstract.
+5. In an interface, all fields are implicitly public static final. This is not
+   the case in a class.
+5. Before Java 8, interfaces were not allowed to have non-abstract methods, while
+   classes, even abstract ones, could. Nowadays, however, interfaces can contain
+   non-abstract methods, whether static or instance.
 
-Question: Why does Java not allow a class to directly extend multiple classes, even if they are abstract?
+Question: Why does Java not allow a class to directly extend multiple classes,
+even if they are abstract?
 
-Answer: If that would be allowed, we might have the following confusing situation:
+Answer: This is known as multiple inheritance of state. If it was allowed, we
+might have the following confusing situation:
 abstract class A1 { int x = 10; }
 abstract class A2 { int x = 20; }
-class C extends A1, A2 { // illegal
-    // problem: which x do we inherit?
-}
-Some languages allow situations like this, and they have complicated rules about it. The designers of Java wanted to avoid this complication (and others), so they forbade extending multiple classes at the same time.
+class C extends A1, A2 {} // illegal
+The problem is: which x does C inherit? Some languages allow multiple inheritance
+of state, and they have complicated rules about it. The designers of Java wanted
+to avoid this complication (and others), so they forbade extending multiple classes
+at the same time.
 
 Question: Why does Java allow a class to directly implement multiple interfaces?
 
-Answer: Since interfaces cannot contain instance fields, we don't have the issue described above.
+Answer: Since interfaces cannot contain instance fields, we don't have the issue
+described above.
 
-Question: Now that Java allows an interface to contain non-abstract ("default") methods, what happens if a class inherits a default method from two interfaces?
-Answer: If this rare occurrence occurs, the class is required by the compiler to override the method. Example:
+Question: Now that Java allows an interface to contain non-abstract ("default")
+methods, what happens if a class inherits a default method from two interfaces?
+Answer: If this rare event occurs, the class is required by the compiler to
+override the method. Example:
 interface I1 {
     default void m() {
         System.out.println("hello");
@@ -58,85 +75,35 @@ class C implements I1, I2 { // legal
 }
 C inherits two implementations of m(), so it must override the method.
 
-Question: What happens if a class C1 inherits a method from both another class C2 and an interface I?
+Question: What happens if a class C1 inherits a method from both another class C2
+and an interface I?
 
 Answer: C2's version of the method wins, unless C2 overrides it.
 
 
 Semantics of an interface:
-1. The specification of an ADT with multiple potential implementations that have the same external behavior.
-   Example: Temperature, implemented by TemperatureC and TemperatureF. TemperatureC and TemperatureF objects can be used interchangeably, since they have the same external behavior, though their implementation details differ.
-2. The specification of an ADT with multiple potential implementations that may have different behavior.
-   Example: Shape, implemented by Circle and Rectangle. A Circle cannot be used in place of a Rectangle, and vice versa, though they both are kinds of Shape.
-3. The specification of a common property or behavior that is exhibited by many non-related types of objects.
-   For example, consider:
+1. The specification of an ADT with multiple potential implementations that have
+   the same external behavior.
+   Example: Temperature, implemented by TemperatureC and TemperatureF. TemperatureC
+   and TemperatureF objects can be used interchangeably, since they have the same
+   external behavior, though their implementation details differ.
+2. The specification of an ADT with multiple potential implementations that may
+   have different behavior.
+   Example: Shape, implemented by Circle and Rectangle. A Circle cannot be used in
+   place of a Rectangle, and vice versa, though they both are kinds of Shape.
+3. The specification of a common property or behavior that is exhibited by many
+   non-related types of objects. For example, consider:
    class Animal {}
-   /* interface Edible {} */
-   class Chicken extends Animal /* implements Edible */ {}
-   class Apple /* implements Edible */ {}
-   It doesn't make sense for Chicken and Apple to have a common superclass, since they don't have much in common. However, they both have the property of being edible. So we can have both Chicken and Apple implement an Edible interface.
+   interface Edible {}
+   class Chicken extends Animal implements Edible {}
+   class Apple implements Edible {}
+   It doesn't make sense for Chicken and Apple to have a common superclass, since
+   they don't have much in common. However, they both have the property of being edible.
+   So we can have both Chicken and Apple implement an Edible interface.
    Question: why not just make Edible a class instead of an interface?
-   Answer: If Edible would be a class, then Chicken wouldn't be able to inherit from both Animal and Edible.
-   And it wouldn't be good to have Animal inherit
-   from Edible, since not all animals are edible.
-   Another example: Comparable<T>, which is
-   implemented by classes such as String, LocalDate,
-   Integer, File, etc.
-
-The Comparable<T> interface:
-Many unrelated types of objects have the common
-property of being comparable. "Comparable" means that
-given a and b, a is either less than b, greater than b,
-or equal to b.
-For example, Strings are comparable, so if we have any
-two Strings, s1 and s2, it must be that either
-- s1 is less than (alphabetically before) s2, or
-- s1 is greater than (alphabetically after) s2, or
-- s1 is equal to s2.
-Similarly, Integers are comparable, LocalDates are
-comparable, etc. For example, if d1 and d2 are
-LocalDates, it must be that either
-- d1 is less than (chronologically before) d2, or
-- d1 is greater than (chronologically after) d2, or
-- d1 is equal to d2.
-In contrast, two Scanners are not comparable: there's no
-notion of less than or greater than for Scanners.
-
-These classes all implement an interface named Comparable,
-which specifies a method named compareTo.
-The compareTo method gets invoked like this:
-a.compareTo(b)
-It returns:
-- a negative int if a is before/less than b
-- a positive int if a is after/greater than b
-- 0 if a and b are equal.
-
-We say that the Comparable interface and its compareTo
-method provide the "natural order" for objects.
-For example, the natural order of Strings is alphabetical,
-the natural order of Integers is numeric order, the
-natural order of LocalDates is chronological.
-
-The Comparator<T> interface:
-Suppose we would like to compare objects that don't have
-a natural order. Or suppose we would like to compare
-objects that have a natural order in some other way. For
-example, suppose we would like to compare Strings by
-length instead of alphabetically. To do this, we create
-an object that inherits from the Comparator interface.
-This interface has a method named compare that takes two
-objects as input, and returns an int (negative, positive,
-or 0, like the compareTo method).
-Suppose c refers to an object that inherits from the
-Comparator interface. We say: c.compare(s1, s2)
-
-(Recall that to call compareTo, we say: s1.compareTo(s2))
-
-compareTo vs. compare:
-The compareTo method is built into the objects that we
-want to compare. The compare method is not built into
-the objects that we are trying to compare; rather, it
-is part of an external Comparator.
-The compareTo method has one parameter. The compare
-method has two parameters: the two objects that the
-Comparator is being asked to compare.
+   Answer: If Edible would be a class, then Chicken wouldn't be able to inherit from
+   both Animal and Edible.
+   Question: why not Animal inherit from Edible?
+   Answer: not all animals are considered edible.
+   Another example: Comparable<T>, which is implemented by classes such as String,
+   LocalDate, Integer, File, etc. We will discuss Comparable in detail later.

@@ -15,7 +15,7 @@ public class RecordDemo {
 A record is a kind of class which acts as a transparent, immutable carrier
 of data.
 
-A record's fields, called its components, are implicitly private and final.
+A record's instance fields, called its components, are implicitly private and final.
 
 A record implicitly has:
 - a canonical constructor: a constructor with parameters for all components

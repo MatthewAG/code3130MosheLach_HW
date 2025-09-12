@@ -1,8 +1,9 @@
-import E_adt.toString_equals_hashCode.A_no_toString.Student;
+package E_adt.toString_equals_hashCode.A_no_toString;
 
-void main() {
-    Student s1 = new Student("John Doe", 1234);
-    Student s2 = new Student("John Doe", 1234);
+public class Main {
+    void main() {
+        Student s1 = new Student("John Doe", 1234);
+        Student s2 = new Student("John Doe", 1234);
 
     /*
     Here, we're using the toString() method of the Object class, which is inherited by the Student class.
@@ -12,16 +13,17 @@ void main() {
     A hash code an int associated with an object; it might be the address of the object, but not necessarily.
     */
 
-    IO.println(s1.toString());
+        IO.println(s1.toString());
 
-    // when we use a reference variable in a print/println statement
-    // Java calls the toString method for us.
-    IO.println(s2);
-    // equivalent to: System.out.println(s2.toString());
+        // when we use a reference variable in a print/println statement
+        // Java calls the toString method for us.
+        IO.println(s2);
+        // equivalent to: System.out.println(s2.toString());
 
-    // Additionally, if we concatenate a reference variable with a String,
-    // Java also calls the toString() method for us
-    String s2info = "s2: " + s2;
-    // equivalent to: String s2info = "s2: " + s2.toString();
-    IO.println(s2info);
+        // Additionally, if we concatenate a reference variable with a String,
+        // Java also calls the toString() method for us
+        String s2info = "s2: " + s2;
+        // equivalent to: String s2info = "s2: " + s2.toString();
+        IO.println(s2info);
+    }
 }
