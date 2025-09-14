@@ -1,7 +1,7 @@
 package E_adt.set;
 
 /**
- * A CharSet whose elements are stored in a fixed-length array.
+ * A CharSet whose elements are stored in an array; the capacity is the array's length.
  */
 public class ArrayCharSet implements CharSet {
     /*
@@ -18,13 +18,14 @@ public class ArrayCharSet implements CharSet {
 
     /**
      * Creates a set of characters with the specified capacity.
-     * @param capacity the number of characters that this set can hold at one time
+     * @param capacity the number of characters that this set should be able to hold at one time
      */
     public ArrayCharSet(int capacity) {
         chars = new char[capacity];
         size = 0;
     }
 
+    // O(n) due to the call contains(ch)
     @Override
     public boolean add(char ch) {
         if (isFull() || contains(ch)) {
@@ -36,6 +37,7 @@ public class ArrayCharSet implements CharSet {
         }
     }
 
+    // O(n) due to the call indexOf(ch)
     @Override
     public boolean remove(char ch) {
         int index = indexOf(ch);
@@ -59,21 +61,25 @@ public class ArrayCharSet implements CharSet {
         }
     }
 
+    // O(n) due to the call indexOf(ch)
     @Override
     public boolean contains(char ch) {
         return indexOf(ch) >= 0;
     }
 
+    // O(1)
     @Override
     public int size() {
         return size;
     }
 
+    // O(1)
     @Override
     public int capacity() {
         return chars.length;
     }
 
+    // O(n) (would be O(n^2) if we used String instead of StringBuilder)
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("{");
@@ -85,6 +91,7 @@ public class ArrayCharSet implements CharSet {
         return sb.append("}").toString();
     }
 
+    // O(n)
     private int indexOf(char ch) {
         for (int i = 0; i < size; i++) {
             if (chars[i] == ch) {

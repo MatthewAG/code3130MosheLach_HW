@@ -1,4 +1,4 @@
-package X_comparing.distance;
+package G_comparing.distance;
 
 record DistanceK(double kilometers) implements Distance {
     @Override

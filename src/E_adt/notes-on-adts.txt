@@ -64,9 +64,11 @@ The following are ADTs:
   does not specify a specific implementation
     - E.g., String, StringBuilder
 
-In the current folder, there are two subfolders with examples of ADTs.
-- Distance is an ADT, but DistanceM and DistanceK are not (they are *implementations* of an ADT).
-- CharSet is an ADT, but StringCharSet and ArrayCharSet are not (they are *implementations* of an ADT).
+In the current folder, there are two subfolders with examples of ADTs: distance and set.
+- Distance is an ADT, but DistanceM and DistanceK are not
+  (rather, they are implementations of an ADT).
+- CharSet is an ADT, but StringCharSet and ArrayCharSet are not
+  (rather, they are implementations of an ADT).
 
 ============================ interfaces and ADTs =================================
 

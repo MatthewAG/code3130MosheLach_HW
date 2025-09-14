@@ -1,4 +1,4 @@
-import X_comparing.distance.Distance;
+import G_comparing.distance.Distance;
 
 void main() throws FileNotFoundException {
     Scanner fileScanner = new Scanner(new File("distances.txt"));
