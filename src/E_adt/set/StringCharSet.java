@@ -5,6 +5,7 @@ package E_adt.set;
  * in reality, though, the capacity is an int, so it can't go above Integer.MAX_VALUE.
  */
 public class StringCharSet implements CharSet {
+    // Representation: the characters of the set are stored in a String.
     private String s = "";
 
     @Override

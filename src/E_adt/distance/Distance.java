@@ -42,6 +42,7 @@ public interface Distance {
     /**
      * Returns a Distance parsed from the provided distance string.
      * @param distanceString a String consisting of a number followed by "mi" or "km" and no spaces
+     * @throws IllegalArgumentException if the distance string is invalid
      */
     static Distance parse(String distanceString) {
         if (distanceString.endsWith("mi")) {

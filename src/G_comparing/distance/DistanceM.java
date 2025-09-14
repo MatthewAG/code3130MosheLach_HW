@@ -10,4 +10,6 @@ record DistanceM(double miles) implements Distance {
     public String toString() {
         return "mi = " + miles() + ", km = " + kilometers();
     }
+
+    // No need to override compareTo here, since Distance provides a default implementation.
 }

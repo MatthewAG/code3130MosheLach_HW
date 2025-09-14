@@ -3,7 +3,7 @@ package G_comparing.distance;
 /**
  * A distance in miles or kilometers.
  */
-public interface Distance extends Comparable<Distance> {
+public interface Distance extends Comparable<Distance> { // note: we say that an interface extends (not implements) an interface
     /**
      * Constant used for converting between miles and kilometers:
      * <ul>
@@ -42,6 +42,7 @@ public interface Distance extends Comparable<Distance> {
     /**
      * Returns a Distance parsed from the provided distance string.
      * @param distanceString a String consisting of a number followed by "mi" or "km" and no spaces
+     * @throws IllegalArgumentException if the distance string is invalid
      */
     static Distance parse(String distanceString) {
         if (distanceString.endsWith("mi")) {
