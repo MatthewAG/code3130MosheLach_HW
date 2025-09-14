@@ -5,12 +5,12 @@ Every language feature has:
  - syntax: grammar rules
  - semantics: meaning
 
-Semantics of a record: an immutable, transparent carrier of data
+Semantics of a record: an immutable, transparent carrier of data.
 Example:
 record Point(int x, int y) {}
 
 Semantics of a class:
-1. a possibly-mutable carrier of data
+1. a possibly-mutable carrier of data.
    Example: StringBuilder
    Another example:
    class BankAccount {
@@ -20,7 +20,7 @@ Semantics of a class:
            balance += amount;
        }
    }
-2. a processor
+2. a processor (the user doesn't care about the data, just the behavior).
    Example: Scanner
    Another example:
    class Averager {
@@ -39,7 +39,7 @@ Semantics of a class:
 
 Semantics of an abstract class: a partial implementation:
 - has some instance fields, but others are deferred to subclasses;
-- has some concrete methods, and also some abstract methods deferred to subclasses to implement
+- has some concrete methods, and also some abstract methods whose implementation is deferred to subclasses.
 
 Semantics of an interface:
 1. The specification of an ADT with multiple potential implementations that have

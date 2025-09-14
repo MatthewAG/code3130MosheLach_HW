@@ -83,12 +83,23 @@ Java's interface is a useful language mechanism for expressing an ADT. Reasons:
 4. Multiple different representations of one abstract data type can coexist in the
    same program, as different classes implementing the same interface.
 
+============================ Coding to the interface ===============================
+
 Coding to the interface: writing applications targeted to interfaces, not to
 specific implementations. This makes our code more flexible, by making it easy to
 switch to a different representation later.
 
-Example: List<String> list = new ArrayList<>();
-Using List, instead of ArrayList, as variable type is an example of coding to the
+Example:
+
+The ArrayList class inherits from the List interface. The List interface specifies
+what it means to be a List, including operations such as add, remove, get, and set.
+ArrayList is the most commonly used implementation of List. ArrayList implements
+(provides method bodies) for List's abstract methods, and introduces a new method
+or two of its own.
+
+Here's the recommended way to create an ArrayList: List<String> list = new ArrayList<>();
+
+Using List, instead of ArrayList, as the variable type is an example of coding to the
 interface. It ensures that we only call List methods, and not methods specific to
 ArrayList. This makes it possible later to easily switch to another implementation
 of List, such as LinkedList. All we have to do is change every "new ArrayList<>()"

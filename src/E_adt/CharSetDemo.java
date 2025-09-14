@@ -15,5 +15,5 @@ void main() {
     }
 
     IO.println(set.size()); // 4
-    IO.println(set); // the characters in some order
+    IO.println(set); // the distinct characters in some order
 }

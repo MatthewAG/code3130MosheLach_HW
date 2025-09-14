@@ -17,7 +17,7 @@ public class ArrayCharSet implements CharSet {
     private int size;
 
     /**
-     * Creates a set of characters with the specified capacity.
+     * Creates an empty set with the specified capacity.
      * @param capacity the number of characters that this set should be able to hold at one time
      */
     public ArrayCharSet(int capacity) {

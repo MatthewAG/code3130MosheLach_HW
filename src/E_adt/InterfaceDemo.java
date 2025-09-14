@@ -39,6 +39,9 @@ record Rectangle(double length, double width) implements Shape {
 public class InterfaceDemo {
     static void main() {
         Shape c = new Circle(5);
+        c.printInfo(); // area = 78.53981633974483, perimeter = 31.41592653589793
+
         Shape r = new Rectangle(10, 15);
+        r.printInfo(); // area = 150.0, perimeter = 50.0
     }
 }
