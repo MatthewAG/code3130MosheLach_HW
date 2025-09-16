@@ -77,6 +77,6 @@ public interface Distance {
      */
     default Distance plus(Distance other) {
         return ofMiles(this.miles() + other.miles());
-        // or: return ofKilometers(this.kilometers(), other.kilometers());
+        // or: return ofKilometers(this.kilometers() + other.kilometers());
     }
 }
