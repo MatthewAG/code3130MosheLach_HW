@@ -44,12 +44,23 @@ Then c.compare(a, b) returns:
 - 0 if a and b are equal.
 
 compareTo vs. compare:
+compareTo:
+- To call compareTo, we say s1.compareTo(s2).
+- The compareTo method is built into the objects that we want to compare.
+- The compareTo method has one parameter.
+compare:
+- To call compare, once we have a Comparator c, we say c.compare(s1, s2).
+- The compare method is not built into the objects that we are trying to compare;
+  rather, it is part of an external Comparator.
+- The compare method has two parameters: the two objects that the Comparator is being asked to compare.
 
-To call compareTo, we say s1.compareTo(s2).
-The compareTo method is built into the objects that we want to compare.
-The compareTo method has one parameter.
+Comparable vs Comparator:
+- A Comparable can compare itself to another object, e.g., "e".compareTo("y")
+- A Comparator can compare two objects, e.g., byLength.compare("e", "y")
 
-To call compare, we say c.compare(s1, s2).
-The compare method is not built into the objects that we are trying to compare;
-rather, it is part of an external Comparator.
-The compare method has two parameters: the two objects that the Comparator is being asked to compare.
+When should you implement Comparable? When you're writing a class whose objects
+you'd like to be comparable with each other.
+
+When should you implement Comparator?
+1. When you want to compare objects of a class that doesn't implement Comparable
+2. When you want to compare objects in a different way than their compareTo method specifies.

@@ -1,5 +1,7 @@
 package G_comparing.distance;
 
+import java.util.Comparator;
+
 /**
  * A distance in miles or kilometers.
  */
@@ -14,6 +16,21 @@ public interface Distance extends Comparable<Distance> { // note: we say that an
     double MI_KM_CONVERSION_CONSTANT = 1.60934;
 
     /**
+     * A distance of zero.
+     */
+    Distance ZERO = ofMiles(0);
+
+    /**
+     * Compares two Distances by their magnitude, that is, based on the size of their absolute values.
+     */
+    Comparator<Distance> BY_MAGNITUDE = new Comparator<>() {
+        @Override
+        public int compare(Distance d1, Distance d2) {
+            return Double.compare(Math.abs(d1.miles()), Math.abs(d2.miles()));
+        }
+    };
+
+    /**
      * Returns the distance in miles.
      */
     double miles();
@@ -24,11 +41,15 @@ public interface Distance extends Comparable<Distance> { // note: we say that an
     double kilometers();
 
     /**
+     * Returns a String containing the distance in both mi and km form.
+     */
+    @Override String toString();
+
+    /**
      * Returns a Distance representing the specified number of miles.
      */
     static Distance ofMiles(double miles) {
         return new DistanceM(miles);
-        // or: new DistanceK(miles * MI_KM_CONVERSION_CONSTANT);
     }
 
     /**
@@ -36,7 +57,6 @@ public interface Distance extends Comparable<Distance> { // note: we say that an
      */
     static Distance ofKilometers(double kilometers) {
         return new DistanceK(kilometers);
-        // or: new DistanceM(kilometers / MI_KM_CONVERSION_CONSTANT);
     }
 
     /**
@@ -52,6 +72,13 @@ public interface Distance extends Comparable<Distance> { // note: we say that an
         } else {
             throw new IllegalArgumentException("invalid distance string: " + distanceString);
         }
+    }
+
+    /**
+     * Returns a Distance representing the sum of this Distance and the provided other Distance.
+     */
+    default Distance plus(Distance other) {
+        return ofMiles(this.miles() + other.miles());
     }
 
     /**

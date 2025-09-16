@@ -1,9 +1,11 @@
 package E_adt.distance;
 
 /**
- * A distance in miles or kilometers.
+ * A distance of miles or kilometers.
  */
 public interface Distance {
+    // ------------------------ constants -----------------------------
+
     /**
      * Constant used for converting between miles and kilometers:
      * <ul>
@@ -14,6 +16,13 @@ public interface Distance {
     double MI_KM_CONVERSION_CONSTANT = 1.60934;
 
     /**
+     * A distance of zero.
+     */
+    Distance ZERO = ofMiles(0); // or: ofKilometers(0);
+
+    // ------------------------ abstract methods ---------------------
+
+    /**
      * Returns the distance in miles.
      */
     double miles();
@@ -22,6 +31,13 @@ public interface Distance {
      * Returns the distance in kilometers.
      */
     double kilometers();
+
+    /**
+     * Returns a String containing the distance in both mi and km form.
+     */
+    @Override String toString();
+
+    // ------------------------ static methods ----------------------
 
     /**
      * Returns a Distance representing the specified number of miles.
@@ -52,5 +68,15 @@ public interface Distance {
         } else {
             throw new IllegalArgumentException("invalid distance string: " + distanceString);
         }
+    }
+
+    // ------------------------ default method ------------------------
+
+    /**
+     * Returns a Distance representing the sum of this Distance and the provided other Distance.
+     */
+    default Distance plus(Distance other) {
+        return ofMiles(this.miles() + other.miles());
+        // or: return ofKilometers(this.kilometers(), other.kilometers());
     }
 }
