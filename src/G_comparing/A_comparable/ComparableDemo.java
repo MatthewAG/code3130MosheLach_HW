@@ -53,6 +53,4 @@ void main() {
     for (Product product : products) {
         IO.println(product);
     }
-
-    // TODO call max
 }
