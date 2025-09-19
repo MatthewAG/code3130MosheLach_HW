@@ -121,8 +121,6 @@ More examples:
 - ArrayList<Double> is NOT a subtype of ArrayList<Number>
  */
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -132,29 +130,29 @@ public class Wildcards {
         // method header:
         // public static void printRandomObject(List<Object> list)
         List<Object> objectList = List.of(new Object(), "cat", 34);
-        System.out.print("random element of object list: ");
+        IO.print("random element of object list: ");
         printRandomObject(objectList);
 
         // won't compile, since List<String> is not a subtype of List<Object>
         // List<String> stringList = List.of("hello", "world");
-        // System.out.println("random element of String list: ");
+        // IO.println("random element of String list: ");
         // printRandomObject(stringList); // stringList is a List<String>
 
         // method header: public static void printRandomElement(List<?> list)
-        System.out.print("random element of object list: ");
+        IO.print("random element of object list: ");
         printRandomElement(objectList);
         List<String> stringList = List.of("hello", "world");
-        System.out.print("random element of String list: ");
+        IO.print("random element of String list: ");
         printRandomElement(stringList);
 
 
         // method header: public static double sum(List<? extends Number> list)
         List<Number> numberList = List.of(56, 7.8);
-        System.out.println(sum(numberList));
+        IO.println(sum(numberList));
         List<Integer> integerList = List.of(5, 7, 1);
-        System.out.println(sum(integerList));
+        IO.println(sum(integerList));
         List<Double> doubleList = List.of(1.1, 2.2);
-        System.out.println(sum(doubleList));
+        IO.println(sum(doubleList));
 
         // method header:
         // public static void addRandomIntegerAtHead(List<? super Integer> list)
@@ -169,7 +167,7 @@ public class Wildcards {
     public static void printRandomObject(List<Object> list) {
         Random generator = new Random();
         int index = generator.nextInt(list.size());
-        System.out.println(list.get(index));
+        IO.println(list.get(index));
     }
 
     // we can pass to this method any of the following examples:
@@ -178,7 +176,7 @@ public class Wildcards {
     public static void printRandomElement(List<?> list) {
         Random generator = new Random();
         int index = generator.nextInt(list.size());
-        System.out.println(list.get(index));
+        IO.println(list.get(index));
     }
   /*
   The ? is called a wildcard; here we are using an unbounded wildcard. 

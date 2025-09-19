@@ -1,5 +1,6 @@
 package F_generics.B_generic_static_methods;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +22,13 @@ public class GenericMethods {
         IO.println("list after swapping the elements at indexes 0 and 2: "
                            + stringList);
 
-        List<String> strings = List.of("bus", "train", "car", "boat");
-        IO.println(max(strings)); // train
+        List<Number> numberList = List.of(1, 2.5, new BigInteger("123"));
+        IO.println(sum(numberList));
+        List<Integer> integerList = List.of(1, 2, 3);
+        IO.println(sum(integerList));
+        List<Double> doubleList = List.of(1.5, 2.5, 3.5);
+        IO.println(sum(doubleList));
+        // IO.println(sum(stringList)); // doesn't compile
     }
 
     /**
@@ -46,25 +52,15 @@ public class GenericMethods {
         list.set(index2, temp);
     }
 
-    /**
-     * Returns the maximum element in the list according to the elements'
-     * natural order.
-     */
-    // Examples of things we can pass to this method: List<Integer>, ArrayList<String>
-    // Examples of things we cannot pass to this method: List<Scanner>
-    public static <E extends Comparable<E>> E max(List<E> list) {
-        if (list.isEmpty()) {
-            throw new IllegalArgumentException("empty list");
+    // Examples of things we can pass to this method: List<Number>, List<Integer>, ArrayList<Double>
+    // Examples of things we cannot pass to this method: List<String>
+    public static <E extends Number> double sum(List<E> list) {
+        double sum = 0;
+
+        for (E element : list) {
+            sum += element.doubleValue();
         }
 
-        E maxSoFar = list.get(0); // or: list.getFirst();
-
-        for (E e : list) {
-            if (e.compareTo(maxSoFar) > 0) {
-                maxSoFar = e;
-            }
-        }
-
-        return maxSoFar;
+        return sum;
     }
 }

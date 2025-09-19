@@ -1,4 +1,4 @@
-The Comparable<T> interface:
+============================ The Comparable<T> interface =====================================
 
 Many unrelated types of objects have the common property of being comparable.
 "Comparable" means that given a and b, a is either less than b, greater than b, or equal to b.
@@ -14,7 +14,8 @@ For example, if d1 and d2 are LocalDates, it must be that either
 - d1 is greater than (chronologically after) d2, or
 - d1 is equal to d2.
 
-By contrast, two Scanners are not comparable: there's no notion of "less than" or "greater than" for Scanners.
+By contrast, two Scanners are not comparable: there's no notion of "less than" or "greater than"
+for Scanners.
 
 The String, LocalDate, and Integer classes (and many more) implement the
 Comparable interface, which specifies a method named compareTo.
@@ -28,7 +29,7 @@ We say that the Comparable interface and its compareTo method provide the
 the natural order of Integers is numeric order, the natural order of LocalDates is
 chronological. These orders are expressed in the compareTo method of those classes.
 
-The Comparator<T> interface:
+============================ The Comparator<T> interface =====================================
 
 Suppose we would like to compare objects that don't have a natural order.
 Or suppose we would like to compare objects that have a natural order in some other way.
@@ -43,11 +44,15 @@ Then c.compare(a, b) returns:
 - a positive int if a is after/greater than b
 - 0 if a and b are equal.
 
+==============================================================================================
+
 compareTo vs. compare:
+
 compareTo:
 - To call compareTo, we say s1.compareTo(s2).
 - The compareTo method is built into the objects that we want to compare.
 - The compareTo method has one parameter.
+
 compare:
 - To call compare, once we have a Comparator c, we say c.compare(s1, s2).
 - The compare method is not built into the objects that we are trying to compare;
