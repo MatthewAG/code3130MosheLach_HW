@@ -14,6 +14,8 @@ public class GenericMethodWithComparator {
         };
         IO.println(max(strings, byLength));
 
+        IO.println(max(strings, Comparator.naturalOrder()));
+
         List<Integer> integers = List.of(4, 5, 10, 6, 2, 7);
         Comparator<Number> numberComparator = new Comparator<>() {
             @Override

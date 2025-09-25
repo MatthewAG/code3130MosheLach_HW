@@ -43,7 +43,7 @@ public class ArraySet<E> implements MySet<E> { // a generic class that implement
 
     private int indexOf(Object o) {
         for (int i = 0; i < size; i++) {
-            if (Objects.equals(elements[i], o)) { // see nullSafeEquals in HW 1
+            if (Objects.equals(elements[i], o)) { // null-safe equality test
                 return i;
             }
         }
