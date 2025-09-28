@@ -155,10 +155,9 @@ public class Wildcards {
         IO.println(sum(doubleList));
 
         // method header:
-        // public static void addRandomIntegerAtHead(List<? super Integer> list)
+        // public static void addRandomDouble(List<? super Double> list)
         ArrayList<Object> list = new ArrayList<>();
-        list.add(5);
-        addRandomIntegerAtHead(list);
+        addRandomDouble(list);
     }
 
     // We cannot pass to this method a List<String>,
@@ -178,19 +177,19 @@ public class Wildcards {
         int index = generator.nextInt(list.size());
         IO.println(list.get(index));
     }
-  /*
-  The ? is called a wildcard; here we are using an unbounded wildcard. 
-  (Below we discuss bounded wildcards.)
-  List<?> means: List of unknown element type.
-  The method header
+    /*
+    The ? is called a wildcard; here we are using an unbounded wildcard.
+    (Below we discuss bounded wildcards.)
+    List<?> means: List of unknown element type.
+    The method header
       public static void printRandomElement(List<?> list)
-  works just like
+    works just like
       public static <E> void printRandomElement(List<E> list).
-  We can use an unbounded wildcard instead of E here, since we have 
-  no need to use the type paramter E inside the method or for the 
-  return type (unlike in the swap method, where we used E
-  inside the method).
-   */
+    We can use an unbounded wildcard instead of E here, since we have
+    no need to use the type paramter E inside the method or for the
+    return type (unlike in the swap method, where we used E
+    inside the method).
+    */
 
 
     // The upper bounded wildcard, <? extends Foo>, where Foo is any type, 
@@ -223,11 +222,10 @@ public class Wildcards {
         // ...
     }
 
-    // we can pass to this method List<Integer>, or a List<Number>,
-    // or List<Object>, but not a List<String>.
-    public static void addRandomIntegerAtHead(List<? super Integer> list) {
+    // we can pass to this method List<Double>, or a List<Number>,
+    // or List<Object>, but not a List<String> or a List<Integer>.
+    public static void addRandomDouble(List<? super Double> list) {
         Random generator = new Random();
-        int r = generator.nextInt();
-        list.add(0, r);
+        list.add(generator.nextDouble());
     }
 }

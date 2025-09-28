@@ -1,8 +1,11 @@
-package F_generics.A_generic_types.set;
+package H_iterating;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class ArraySet<E> implements MySet<E> { // a generic class that implements a generic interface
+// an example of a class with a custom iterator
+public class ArraySet<E> implements MySet<E> {
     private final E[] elements;
     private int size;
 
@@ -68,11 +71,43 @@ public class ArraySet<E> implements MySet<E> { // a generic class that implement
 
     private int indexOf(Object o) {
         for (int i = 0; i < size; i++) {
-            if (Objects.equals(elements[i], o)) { // null-safe equality test
+            if (Objects.equals(elements[i], o)) {
                 return i;
             }
         }
 
         return -1;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new ArraySetIterator();
+    }
+
+    // A non-static inner class.
+    // It can access all fields and methods of the outer class.
+    private class ArraySetIterator implements Iterator<E> {
+        private int index;
+
+        public ArraySetIterator() {
+            index = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return index < size;
+        }
+
+        @Override
+        public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+
+            E element = elements[index];
+            index++;
+            return element;
+            // the above three lines can be combined to: return elements[index++];
+        }
     }
 }
