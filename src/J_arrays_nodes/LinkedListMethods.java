@@ -27,7 +27,7 @@ void main() {
 
 // Given the head of a (possibly empty) linked list, prints the list's elements.
 // O(n) time, O(1) space
-<E> void printIteratively(Node<E> head) {
+void printIteratively(Node<?> head) {
     while (head != null) {
         IO.print(head.data + " ");
         head = head.next;
@@ -36,7 +36,7 @@ void main() {
 
 
 // O(n) time, O(n) space
-<E> void printRecursively(Node<E> head) {
+void printRecursively(Node<?> head) {
     if (head != null) {
         IO.print(head.data + " ");
         printRecursively(head.next);
@@ -45,19 +45,20 @@ void main() {
 
 // Given the head of a (possibly empty) linked list, returns the number of nodes in the list.
 // O(n) time, O(1) space
-<E> int getSizeIteratively(Node<E> head) {
+int getSizeIteratively(Node<?> head) {
+    Node<?> current = head;
     int size = 0;
 
-    while (head != null) {
+    while (current != null) {
         size++;
-        head = head.next;
+        current = current.next;
     }
 
     return size;
 }
 
 // O(n) time, O(n) space
-<E> int getSizeRecursively(Node<E> head) {
+int getSizeRecursively(Node<?> head) {
     if (head == null) {
         return 0;
     } else {
@@ -69,10 +70,11 @@ void main() {
 // O(n) time, O(n) space
 <E> void printReversedIteratively(Node<E> head) {
     List<E> aux = new ArrayList<>();
+    Node<E> current = head;
 
-    while (head != null) {
-        aux.add(head.data);
-        head = head.next;
+    while (current != null) {
+        aux.add(current.data);
+        current = current.next;
     }
 
     for (int i = aux.size() - 1; i >= 0; i--) {
@@ -81,7 +83,7 @@ void main() {
 }
 
 // O(n) time, O(n) space
-<E> void printReversedRecursively(Node<E> head) {
+void printReversedRecursively(Node<?> head) {
     if (head != null) {
         printReversedRecursively(head.next);
         IO.print(head.data + " ");

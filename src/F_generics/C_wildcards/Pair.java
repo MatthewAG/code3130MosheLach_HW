@@ -36,7 +36,7 @@ public class Pair<T> {
     Suppose p1 is a Pair<String>, and p2 is another Pair.
     If we say p1.equals(p2), we hope that p2 is also a Pair<String>
     But the equals method has no way to guarantee this.
-    So, rather than checking if o instanceof Pair<T>, we check if o instanceof Pair<T>.
+    So, rather than checking if o instanceof Pair<T>, we check if o instanceof Pair<?>.
     */
     @Override
     public boolean equals(Object o) {
