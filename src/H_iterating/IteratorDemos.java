@@ -35,62 +35,61 @@ hasNext() and next().
  */
 
 void main() {
-    List<String> list = List.of("hello", "world", "good", "morning");
-    printCollection(list);
+    List<String> strings = List.of("hello", "world", "good", "morning");
+    printElements(strings);
 
-    Set<Integer> set = Set.of(11, 33, 22, 44);
-    printCollection(set);
-
-    // As we will see soon, List and Set extend the Collection interface.
+    List<Integer> integers = new ArrayList<>(List.of(2, 8, 1, 2, 9, 3, 4));
+    removeEvenElements(integers);
+    System.out.println(integers);
 }
 
-<E> void printCollection(Collection<E> collection) {
-    // cannot use an old-fashioned for loop, since a Collection
-    // doesn't know about indexes!
-    // for (int i = 0; i < collection.size(); i++) {
-    //     ???????
-    // }
+<E> void printElements(List<E> list) {
+    // one way:
+    for (int i = 0; i < list.size(); i++) {
+        IO.print(list.get(i) + " ");
+    }
+    IO.println();
 
     // using an enhanced for loop
-    for (E element : collection) {
+    for (E element : list) {
         IO.print(element + " ");
     }
     IO.println();
 
     // using an iterator: one style - using a for loop
-    for (Iterator<E> it = collection.iterator(); it.hasNext(); ) {
+    for (Iterator<E> it = list.iterator(); it.hasNext(); ) {
         IO.print(it.next() + " ");
     }
     IO.println();
 
     // using an iterator: another style - using a while loop
-    Iterator<E> it = collection.iterator();
+    Iterator<E> it = list.iterator();
     while (it.hasNext()) {
         IO.print(it.next() + " ");
     }
     IO.println();
 }
 
-void removeEvenElements(Collection<Integer> collection) {
-    // for (Integer element : collection) {
+void removeEvenElements(List<Integer> list) {
+    // for (Integer element : list) {
     //     if (element % 2 == 0) {
-    //         collection.remove(element);
+    //         list.remove(element);
     //     }
     // }
     // Does not work - we get a ConcurrentModificationException,
-    // which occurs when we use method of a collection to modify the size of
-    // the collection while we are iterating over the collection.
+    // which occurs when we use method of a list to modify the size of
+    // the list while we are iterating over the list.
     // Even though we don't see the iterator here, it exists under the hood.
 
-    for (Iterator<Integer> iter = collection.iterator(); iter.hasNext(); ) {
+    for (Iterator<Integer> iter = list.iterator(); iter.hasNext(); ) {
         int element = iter.next();
 
         if (element % 2 == 0) {
             iter.remove(); // calling Iterator's remove method, not Collection's, so no ConcurrentModificationException.
-            // Iterator's remove method removes from the collection the last element returned by next()
+            // Iterator's remove method removes from the list the most recent element returned by next()
         }
     }
 
     // near the end of the course, we will see that we can simply say:
-    // collection.removeIf(element -> element % 2 == 0);
+    // list.removeIf(element -> element % 2 == 0);
 }
