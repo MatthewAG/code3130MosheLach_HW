@@ -57,7 +57,7 @@ public class AnonymousClassDemo {
                 return "{" + s.substring(1, s.length() - 1) + "}";
             }
         };
-        IO.println(customList);
+        IO.println(customList); // {}
         customList.add("a");
         customList.add("b");
         customList.add("c");

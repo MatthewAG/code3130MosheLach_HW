@@ -12,9 +12,9 @@ public class GenericMethodWithComparator {
                 return Integer.compare(s1.length(), s2.length());
             }
         };
-        IO.println(max(strings, byLength));
+        IO.println(max(strings, byLength)); // balloon
 
-        IO.println(max(strings, Comparator.naturalOrder()));
+        IO.println(max(strings, Comparator.naturalOrder())); // plane
 
         List<Integer> integers = List.of(4, 5, 10, 6, 2, 7);
         Comparator<Number> numberComparator = new Comparator<>() {
@@ -23,7 +23,7 @@ public class GenericMethodWithComparator {
                 return Double.compare(n1.doubleValue(), n2.doubleValue());
             }
         };
-        IO.println(max(integers, numberComparator));
+        IO.println(max(integers, numberComparator)); // 10
     }
 
     public static <E> E max(List<E> list, Comparator<? super E> comparator) {

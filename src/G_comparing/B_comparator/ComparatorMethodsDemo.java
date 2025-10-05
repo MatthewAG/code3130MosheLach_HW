@@ -16,7 +16,7 @@ static methods:
 
 default methods:
 - if c is a Comparator, then c.reversed() returns a Comparator that does the reverse of c.
-    - that is, the Comparator's compare method returns positive wherever compareTo would return negative, and vice versa
+    - that is, the compare method of the new Comparator returns positive wherever c's compare method would return negative, and vice versa
 - if c1 and c2 are Comparators, then c1.thenComparing(c2) returns a Comparator that
   first compares objects using c1 and then (if there's a tie) compares them using c2.
  */
