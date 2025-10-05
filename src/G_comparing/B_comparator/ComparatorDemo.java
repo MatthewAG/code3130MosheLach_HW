@@ -1,7 +1,6 @@
 package G_comparing.B_comparator;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 class StringLengthComparator implements Comparator<String> {
     @Override
@@ -10,17 +9,17 @@ class StringLengthComparator implements Comparator<String> {
     }
 }
 
-record Student(int id, int age) {}
+record Student(String name, int id) {}
 
-class StudentAgeComparator implements Comparator<Student> {
+class StudentIdComparator implements Comparator<Student> {
     @Override
     public int compare(Student s1, Student s2) {
-        return Integer.compare(s1.age(), s2.age());
+        return Integer.compare(s1.id(), s2.id());
     }
 }
 
-public class ComparatorDemo {
-    static void main() {
+class ComparatorDemo {
+    void main() {
         // using natural order
         IO.println("bird".compareTo("cat")); // negative int
         IO.println("dog".compareTo("cat")); // positive int
@@ -31,20 +30,29 @@ public class ComparatorDemo {
 
         String[] stringArray = {"rabbit", "cat", "bird"};
         // Arrays.sort(stringArray); // sorts the array using natural order
-        Arrays.sort(stringArray, byLength);
-        // sorts the array based on the provided Comparator, byLength
+        Arrays.sort(stringArray, byLength); // sorts the array based on the provided Comparator
         IO.println(Arrays.toString(stringArray)); // [cat, bird, rabbit]
 
         Student[] students = {
-                new Student(56789, 19),
-                new Student(12345, 21),
-                new Student(11111, 20)
+                new Student("John", 56789),
+                new Student("Jane", 12345),
+                new Student("Jill", 11111)
         };
 
         // Arrays.sort(students); // ClassCastException at runtime
 
-        Comparator<Student> byAge = new StudentAgeComparator();
+        List<Student> studentList = new ArrayList<>(List.of(
+                new Student("John", 56789),
+                new Student("Jane", 12345),
+                new Student("Jill", 11111)
+        ));
+        // Collections.sort(studentList); // doesn't compile
+
+        Comparator<Student> byAge = new StudentIdComparator();
         Arrays.sort(students, byAge);
-        IO.println("sorted ascending by age: " + Arrays.toString(students));
+        IO.println("sorted ascending by id: " + Arrays.toString(students));
+
+        Collections.sort(studentList, byAge);
+        // or: studentList.sort(byAge);
     }
 }
