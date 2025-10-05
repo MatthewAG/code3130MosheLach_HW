@@ -8,8 +8,9 @@ void main() {
     set.add("c");
 
     for (String s : set) {
-        IO.println(s);
+        IO.print(s + " ");
     }
+    IO.println();
 
     Iterator<String> iter = set.iterator();
     IO.println(iter.next()); // a

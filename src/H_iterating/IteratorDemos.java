@@ -40,7 +40,7 @@ void main() {
 
     List<Integer> integers = new ArrayList<>(List.of(2, 8, 1, 2, 9, 3, 4));
     removeEvenElements(integers);
-    System.out.println(integers);
+    IO.println(integers);
 }
 
 <E> void printElements(List<E> list) {
@@ -77,9 +77,8 @@ void removeEvenElements(List<Integer> list) {
     //     }
     // }
     // Does not work - we get a ConcurrentModificationException,
-    // which occurs when we use method of a list to modify the size of
+    // which occurs when we use a method of a list to modify the size of
     // the list while we are iterating over the list.
-    // Even though we don't see the iterator here, it exists under the hood.
 
     for (Iterator<Integer> iter = list.iterator(); iter.hasNext(); ) {
         int element = iter.next();

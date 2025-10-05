@@ -87,11 +87,7 @@ public class ArraySet<E> implements MySet<E> {
     // A non-static inner class.
     // It can access all fields and methods of the outer class.
     private class ArraySetIterator implements Iterator<E> {
-        private int index;
-
-        public ArraySetIterator() {
-            index = 0;
-        }
+        private int index = 0;
 
         @Override
         public boolean hasNext() {
