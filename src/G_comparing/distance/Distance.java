@@ -5,7 +5,9 @@ import java.util.Comparator;
 /**
  * A distance in miles or kilometers.
  */
-public interface Distance extends Comparable<Distance> { // note: we say that an interface extends (not implements) an interface
+public interface Distance extends Comparable<Distance> {
+    // notice: we say that an interface extends (not implements) an interface
+
     /**
      * Constant used for converting between miles and kilometers:
      * <ul>
@@ -21,7 +23,7 @@ public interface Distance extends Comparable<Distance> { // note: we say that an
     Distance ZERO = ofMiles(0);
 
     /**
-     * Compares two Distances by their magnitude, that is, based on the size of their absolute values.
+     * Compares two Distances by their magnitude, that is, by their absolute values.
      */
     Comparator<Distance> BY_MAGNITUDE = new Comparator<>() {
         @Override
