@@ -1,4 +1,4 @@
-package K_stack_queue_deque.C_deque;
+package J_stack_queue_deque.C_deque;
 
 public class LinkedDeque3130<E> implements Deque3130<E> {
     // Representation: doubly-linked list with head and tail pointers.

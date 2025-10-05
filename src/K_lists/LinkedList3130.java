@@ -1,6 +1,6 @@
-package L_lists;
+package K_lists;
 
-import K_stack_queue_deque.C_deque.Deque3130;
+import J_stack_queue_deque.C_deque.Deque3130;
 
 import java.util.Comparator;
 import java.util.Iterator;

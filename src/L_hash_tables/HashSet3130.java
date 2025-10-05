@@ -1,4 +1,4 @@
-package M_hash_tables;
+package L_hash_tables;
 
 import java.util.Iterator;
 

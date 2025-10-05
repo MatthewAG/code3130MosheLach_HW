@@ -1,4 +1,4 @@
-package J_arrays_nodes;
+package I_nodes;
 
 public class Node<E> {
     public E data;

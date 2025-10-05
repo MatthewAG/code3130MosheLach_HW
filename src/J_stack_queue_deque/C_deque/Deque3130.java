@@ -1,7 +1,7 @@
-package K_stack_queue_deque.C_deque;
+package J_stack_queue_deque.C_deque;
 
-import K_stack_queue_deque.A_stack.Stack3130;
-import K_stack_queue_deque.B_queue.Queue3130;
+import J_stack_queue_deque.A_stack.Stack3130;
+import J_stack_queue_deque.B_queue.Queue3130;
 
 public interface Deque3130<E> extends Stack3130<E>, Queue3130<E> {
     void addFirst(E e);

@@ -1,4 +1,4 @@
-package K_stack_queue_deque.A_stack;
+package J_stack_queue_deque.A_stack;
 
 import java.util.Arrays;
 

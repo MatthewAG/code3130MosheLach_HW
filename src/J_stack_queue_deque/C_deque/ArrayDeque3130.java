@@ -1,4 +1,4 @@
-package K_stack_queue_deque.C_deque;
+package J_stack_queue_deque.C_deque;
 
 public class ArrayDeque3130<E> implements Deque3130<E> {
     // Representation: ...

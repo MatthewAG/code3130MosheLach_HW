@@ -1,4 +1,4 @@
-package K_stack_queue_deque.B_queue;
+package J_stack_queue_deque.B_queue;
 
 public class ArrayQueue3130<E> implements Queue3130<E> {
     // Representation: ...

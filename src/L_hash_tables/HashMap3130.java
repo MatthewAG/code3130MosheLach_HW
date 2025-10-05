@@ -1,4 +1,4 @@
-package M_hash_tables;
+package L_hash_tables;
 
 public class HashMap3130<K, V> implements Map3130<K, V> {
     @Override
