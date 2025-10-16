@@ -1,5 +1,7 @@
 package J_stack_queue_deque.A_stack;
 
+import java.util.NoSuchElementException;
+
 /**
  * An implementation of the stack ADT using singly-linked nodes.
  * Methods isEmpty, push, and pop run in constant time.
@@ -35,7 +37,7 @@ public class LinkedStack3130<E> implements Stack3130<E> {
     @Override
     public E pop() {
         if (isEmpty()) {
-            throw new IllegalStateException();
+            throw new NoSuchElementException();
         }
 
         E result = head.data;

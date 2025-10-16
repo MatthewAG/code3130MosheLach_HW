@@ -11,6 +11,8 @@ public interface Deque3130<E> extends Stack3130<E>, Queue3130<E> {
     E removeFirst();
     E removeLast();
 
+    // Stack3130 methods
+
     @Override
     default void push(E e) {
         addFirst(e);
@@ -20,6 +22,8 @@ public interface Deque3130<E> extends Stack3130<E>, Queue3130<E> {
     default E pop() {
         return removeFirst();
     }
+
+    // Queue3130 methods
 
     @Override
     default void enqueue(E e) {

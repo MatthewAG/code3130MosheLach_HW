@@ -16,7 +16,7 @@ public interface Stack3130<E> {
 
     /**
      * Pops the top element off the stack and returns it.
-     * Throws an IllegalStateException if the stack is empty.
+     * Throws a NoSuchElementException if the stack is empty.
      */
     E pop();
 
