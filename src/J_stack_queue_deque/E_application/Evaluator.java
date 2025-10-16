@@ -1,13 +1,15 @@
-package J_stack_queue_deque.E_applications;
+package J_stack_queue_deque.E_application;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.List;
 import java.util.Set;
 
 public class Evaluator {
     private final String expression;
 
-    private static final Set<String> OPERATORS = Set.of("+", "-", "*", "/", "^");
+    // better done with a Set, but we didn't cover it yet
+    private static final List<String> OPERATORS = List.of("+", "-", "*", "/", "^");
 
     public Evaluator(String expression) {
         this.expression = expression;
