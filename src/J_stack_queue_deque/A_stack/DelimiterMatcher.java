@@ -2,6 +2,10 @@ package J_stack_queue_deque.A_stack;
 
 import java.util.List;
 
+/**
+ * A tool that can determine whether the delimiters (), [], and {} in
+ * an expression are properly matched. (A classic stack application.)
+ */
 public class DelimiterMatcher {
     private final String expression;
 
@@ -11,7 +15,6 @@ public class DelimiterMatcher {
 
     /**
      * Determines if the delimiters in the expression are properly matched.
-     * (A classic stack application.)
      */
     public boolean isMatched() {
         Stack3130<Character> stack = new ArrayStack3130<>(); // or LinkedStack3130
