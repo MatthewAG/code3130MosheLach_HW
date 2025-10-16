@@ -1,4 +1,4 @@
-package J_stack_queue_deque.D_application;
+package J_stack_queue_deque.E_applications;
 
 import java.util.*;
 

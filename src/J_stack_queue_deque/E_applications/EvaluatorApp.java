@@ -1,4 +1,4 @@
-import J_stack_queue_deque.D_application.Evaluator;
+import J_stack_queue_deque.E_applications.Evaluator;
 
 /**
  * This program prompts for fully-parenthesized arithmetic expressions, and it

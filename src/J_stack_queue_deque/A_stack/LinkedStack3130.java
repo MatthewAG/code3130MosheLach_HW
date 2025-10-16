@@ -1,7 +1,14 @@
 package J_stack_queue_deque.A_stack;
 
+/**
+ * An implementation of the stack ADT using singly-linked nodes.
+ * Methods isEmpty, push, and pop run in constant time.
+ */
 public class LinkedStack3130<E> implements Stack3130<E> {
-    // Representation: ...
+    // Representation: the elements are stored in a singly-linked list
+    // (that is, a chain of singly-linked nodes). We have a reference
+    // to the head node; the reference is null when the stack is empty.
+    // Pushing and popping take place at the head of the list.
 
     private static class Node<E> {
         E data;
