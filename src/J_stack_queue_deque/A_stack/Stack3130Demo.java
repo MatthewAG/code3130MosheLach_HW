@@ -19,8 +19,8 @@ void main() {
     stack.push(7);
     IO.println(stack); // [7, 3, 5, 10]
 
-    IO.println(sum(stack));
-    IO.println(stack);
+    IO.println(sum(stack)); // 25
+    IO.println(stack); // [7, 3, 5, 10]
 
     while (!stack.isEmpty()) {
         IO.print(stack.pop() + " ");

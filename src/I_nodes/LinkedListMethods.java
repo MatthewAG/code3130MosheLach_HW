@@ -14,15 +14,19 @@ void main() {
     head3.next.next.next = new Node<>(4);
 
     printIteratively(head1); // A B C
+    IO.println();
     printIteratively(head2); //
+    IO.println();
     printIteratively(head3); // 1 2 3 4
+    IO.println();
 
+    IO.println(getSizeIteratively(head1)); // 3
+    IO.println(getSizeRecursively(head1)); // 3
+
+    printReversedIteratively(head1); // C B A
+    IO.println();
     printReversedRecursively(head1); // C B A
-
-    Node<Integer> head4 = null;
-    for (int i = 5; i <= 25; i += 5) {
-        head4 = addLastIteratively(head4, i);
-    }
+    IO.println();
 }
 
 // Given the head of a (possibly empty) linked list, prints the list's elements.
@@ -46,12 +50,11 @@ void printRecursively(Node<?> head) {
 // Given the head of a (possibly empty) linked list, returns the number of nodes in the list.
 // O(n) time, O(1) space
 int getSizeIteratively(Node<?> head) {
-    Node<?> current = head;
     int size = 0;
 
-    while (current != null) {
+    while (head != null) {
         size++;
-        current = current.next;
+        head = head.next;
     }
 
     return size;
@@ -70,11 +73,10 @@ int getSizeRecursively(Node<?> head) {
 // O(n) time, O(n) space
 <E> void printReversedIteratively(Node<E> head) {
     List<E> aux = new ArrayList<>();
-    Node<E> current = head;
 
-    while (current != null) {
-        aux.add(current.data);
-        current = current.next;
+    while (head != null) {
+        aux.add(head.data);
+        head = head.next;
     }
 
     for (int i = aux.size() - 1; i >= 0; i--) {
@@ -87,40 +89,5 @@ void printReversedRecursively(Node<?> head) {
     if (head != null) {
         printReversedRecursively(head.next);
         IO.print(head.data + " ");
-    }
-}
-
-// Given the head of a (possibly empty) linked list and an element, adds the element
-// at the front of the list, and returns the head of the updated list.
-// O(1) time, O(1) space
-<E> Node<E> addFirst(Node<E> head, E element) {
-    return new Node<>(element, head);
-}
-
-// Given the head of a (possibly empty) linked list and an element, adds the element
-// at the end of the list, and returns the head of the updated list.
-// O(n) time, O(1) space
-<E> Node<E> addLastIteratively(Node<E> head, E element) {
-    if (head == null) {
-        return new Node<>(element);
-    }
-
-    Node<E> curr = head;
-
-    while (curr.next != null) {
-        curr = curr.next;
-    }
-
-    curr.next = new Node<>(element);
-    return head;
-}
-
-// O(n) time, O(n) space
-<E> Node<E> addLastRecursively(Node<E> head, E element) {
-    if (head == null) {
-        return new Node<>(element);
-    } else {
-        head.next = addLastRecursively(head.next, element);
-        return head;
     }
 }
