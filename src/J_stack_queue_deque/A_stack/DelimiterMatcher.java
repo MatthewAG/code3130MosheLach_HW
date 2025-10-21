@@ -1,23 +1,19 @@
 package J_stack_queue_deque.A_stack;
 
 import java.util.List;
+import java.util.Stack;
 
 /**
  * A tool that can determine whether the delimiters (), [], and {} in
  * an expression are properly matched. (A classic stack application.)
  */
 public class DelimiterMatcher {
-    private final String expression;
-
-    public DelimiterMatcher(String expression) {
-        this.expression = expression;
-    }
-
     /**
-     * Determines if the delimiters in the expression are properly matched.
+     * Determines if the delimiters in the provided expression are properly matched.
      */
-    public boolean isMatched() {
-        Stack3130<Character> stack = new ArrayStack3130<>(); // or LinkedStack3130
+    public boolean isMatched(String expression) {
+        Stack<Character> stack = new Stack<>();
+        // alternatively, we could use Stack3130 and ArrayStack3130/LinkedStack3130
 
         for (char ch : expression.toCharArray()) {
             if (isOpeningDelimiter(ch)) {
@@ -39,7 +35,7 @@ public class DelimiterMatcher {
         return stack.isEmpty(); // were all opening delimiters matched?
     }
 
-    // parallel Lists (better done with a Map, but we didn't learn that yet)
+    // parallel Lists (better done with a Map, but we haven't covered that yet)
     private static final List<Character> OPENING_DELIMITERS = List.of('(', '[', '{');
     private static final List<Character> CLOSING_DELIMITERS = List.of(')', ']', '}');
 
@@ -71,18 +67,16 @@ public class DelimiterMatcher {
                 "([]"
         };
 
-        for (String s : valid) {
-            DelimiterMatcher matcher = new DelimiterMatcher(s);
+        DelimiterMatcher matcher = new DelimiterMatcher();
 
-            if (matcher.isMatched()) {
+        for (String s : valid) {
+            if (!matcher.isMatched(s)) {
                 IO.println("Error evaluating valid: " + s);
             }
         }
 
         for (String s : invalid) {
-            DelimiterMatcher matcher = new DelimiterMatcher(s);
-
-            if (matcher.isMatched()) {
+            if (matcher.isMatched(s)) {
                 IO.println("Error evaluating invalid: " + s);
             }
         }
