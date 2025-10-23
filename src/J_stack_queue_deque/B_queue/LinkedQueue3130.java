@@ -23,10 +23,17 @@ public class LinkedQueue3130<E> implements Queue3130<E> {
     }
 
     private Node<E> head, tail;
+    int size = 0;
+
+    @Override
+    public int size() {
+        return size;
+    }
 
     @Override
     public boolean isEmpty() {
         return head == null && tail == null;
+        // or: return size == 0;
     }
 
     @Override
@@ -36,6 +43,8 @@ public class LinkedQueue3130<E> implements Queue3130<E> {
         } else {
             tail = tail.next = new Node<>(e);
         }
+
+        size++;
     }
 
     @Override
@@ -46,6 +55,7 @@ public class LinkedQueue3130<E> implements Queue3130<E> {
 
         E result = head.data;
         head = head.next;
+        size--;
         return result;
     }
 

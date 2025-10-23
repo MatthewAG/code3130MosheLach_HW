@@ -51,7 +51,7 @@ public class DelimiterMatcher {
         return OPENING_DELIMITERS.indexOf(opening) == CLOSING_DELIMITERS.indexOf(closing);
     }
 
-    // demo
+    // some tests
     static void main() {
         String[] valid = {
                 "()(()){([()])}",
