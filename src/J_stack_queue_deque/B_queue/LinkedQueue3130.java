@@ -2,6 +2,10 @@ package J_stack_queue_deque.B_queue;
 
 import java.util.NoSuchElementException;
 
+/**
+ * An implementation of the queue ADT using singly-linked nodes.
+ * All methods, except toString(), run in constant time.
+ */
 public class LinkedQueue3130<E> implements Queue3130<E> {
     // Representation: singly-linked list with head and tail pointers.
     // The queue is empty when head and tail are both null.
@@ -56,7 +60,21 @@ public class LinkedQueue3130<E> implements Queue3130<E> {
         E result = head.data;
         head = head.next;
         size--;
+
+        if (head == null) {
+            tail = null; // queue is empty now
+        }
+
         return result;
+    }
+
+    @Override
+    public E peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
+        return head.data;
     }
 
     @Override

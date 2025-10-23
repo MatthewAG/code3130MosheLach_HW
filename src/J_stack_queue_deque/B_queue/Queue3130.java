@@ -8,5 +8,6 @@ public interface Queue3130<E> {
     boolean isEmpty();
     void enqueue(E e);
     E dequeue(); // throws
+    E peek();
     @Override String toString();
 }

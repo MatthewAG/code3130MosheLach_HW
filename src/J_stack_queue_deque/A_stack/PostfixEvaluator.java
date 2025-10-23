@@ -29,51 +29,42 @@ Solution: Use a stack of numbers.
   If the stack does not contain exactly one number, the expression is not valid.
  */
 
-import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class PostfixEvaluator {
-    private static final List<String> OPERATORS = List.of("+", "-", "*", "/", "^");
-
     public int evaluate(String expression) {
         Scanner scanner = new Scanner(expression);
         Stack<Integer> stack = new Stack<>();
 
         while (scanner.hasNext()) {
-            String token = scanner.next();
-
-            if (isOperator(token)) {
+            if (scanner.hasNextInt()) {
+                stack.push(scanner.nextInt());
+            } else {
+                String operator = scanner.next();
                 int num1 = stack.pop(); // throws exception if stack.isEmpty()
                 int num2 = stack.pop(); // throws exception if stack.isEmpty()
-                int result = evaluate(token, num2, num1); // note the order
+                int result = apply(operator, num2, num1); // note the order
                 stack.push(result);
-            } else {
-                int num = Integer.parseInt(token); // throws exception if token cannot be parsed as an int
-                stack.push(num);
             }
         }
 
         if (stack.size() != 1) {
-            throw new RuntimeException();
+            throw new RuntimeException("Incorrect number of operators in expression");
         } else {
             return stack.peek();
         }
     }
 
-    private static boolean isOperator(String token) {
-        return OPERATORS.contains(token);
-    }
-
     // Given an operator (+, -, *, or /) and two operands, returns the
     // result of applying the given operator to the given operands.
-    private static int evaluate(String operator, int operand1, int operand2) {
+    private static int apply(String operator, int operand1, int operand2) {
         return switch (operator) {
             case "+" -> operand1 + operand2;
             case "-" -> operand1 - operand2;
             case "*" -> operand1 * operand2;
             case "/" -> operand1 / operand2;
-            default -> throw new IllegalArgumentException("Illegal operator " + operator);
+            default -> throw new RuntimeException("Illegal operator " + operator);
         };
     }
 }
