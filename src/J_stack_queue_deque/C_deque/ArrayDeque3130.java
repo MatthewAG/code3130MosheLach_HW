@@ -43,4 +43,9 @@ public class ArrayDeque3130<E> implements Deque3130<E> {
     public boolean isEmpty() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return null;
+    }
 }
