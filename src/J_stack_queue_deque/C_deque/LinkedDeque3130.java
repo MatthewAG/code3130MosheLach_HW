@@ -143,3 +143,14 @@ public class LinkedDeque3130<E> implements Deque3130<E> {
         return sb.append("]").toString();
     }
 }
+
+/*
+                        Singly-linked                       Doubly-linked
+                Only head       Head and tail       Only head       Head and tail
+getFirst          O(1)              O(1)              O(1)              O(1)
+getLast           O(n)              O(1)              O(n)              O(1)
+addFirst          O(1)              O(1)              O(1)              O(1)
+addLast           O(n)              O(1)              O(n)              O(1)
+removeFirst       O(1)              O(1)              O(1)              O(1)
+removeLast        O(n)              O(n)              O(n)              O(1)
+ */
