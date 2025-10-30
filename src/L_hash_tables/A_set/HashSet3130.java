@@ -1,8 +1,11 @@
-package L_hash_tables;
+package L_hash_tables.A_set;
 
 import java.util.Iterator;
 
 public class HashSet3130<E> implements Set3130<E> {
+    // Representation: a hash table.
+    // We use chaining to resolve collisions.
+
     @Override
     public int size() {
         return 0;

@@ -11,6 +11,10 @@ public interface List3130<E> extends Iterable<E> {
     int indexOf(Object o);
     int lastIndexOf(Object o);
     void sort(Comparator<? super E> comparator);
+    @Override String toString();
 
-    // listIterator() ?
+    // no time to cover:
+    // List3130<E> reversed()?
+    // ListIterator<E> listIterator()?
+    // List3130<E> subList(int fromIndex, int toIndex)?
 }

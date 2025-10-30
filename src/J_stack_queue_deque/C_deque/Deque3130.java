@@ -34,4 +34,9 @@ public interface Deque3130<E> extends Stack3130<E>, Queue3130<E> {
     default E dequeue() {
         return removeFirst();
     }
+
+    @Override
+    default E peek() {
+        return getFirst();
+    }
 }

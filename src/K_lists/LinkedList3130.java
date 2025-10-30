@@ -5,7 +5,20 @@ import J_stack_queue_deque.C_deque.Deque3130;
 import java.util.Comparator;
 import java.util.Iterator;
 
+// TODO for homework
 public class LinkedList3130<E> implements Deque3130<E>, List3130<E> {
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    // deque methods
+
     @Override
     public void addFirst(E e) {
 
@@ -36,15 +49,7 @@ public class LinkedList3130<E> implements Deque3130<E>, List3130<E> {
         return null;
     }
 
-    @Override
-    public boolean isEmpty() {
-        return false;
-    }
-
-    @Override
-    public int size() {
-        return 0;
-    }
+    // list methods
 
     @Override
     public void add(int index, E element) {
@@ -78,11 +83,17 @@ public class LinkedList3130<E> implements Deque3130<E>, List3130<E> {
 
     @Override
     public void sort(Comparator<? super E> comparator) {
-
+        // copy the list into an array, sort the array,
+        // and then copy the array back into the list
     }
 
     @Override
     public Iterator<E> iterator() {
+        return null;
+    }
+
+    @Override
+    public String toString() {
         return null;
     }
 }

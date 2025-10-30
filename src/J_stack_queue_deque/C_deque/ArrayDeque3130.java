@@ -1,7 +1,8 @@
 package J_stack_queue_deque.C_deque;
 
+// TODO for homework
 public class ArrayDeque3130<E> implements Deque3130<E> {
-    // Representation: ...
+    // Representation: a circular array (aka a ring buffer).
 
     @Override
     public void addFirst(E e) {
@@ -31,6 +32,11 @@ public class ArrayDeque3130<E> implements Deque3130<E> {
     @Override
     public E removeLast() {
         return null;
+    }
+
+    @Override
+    public int size() {
+        return 0;
     }
 
     @Override

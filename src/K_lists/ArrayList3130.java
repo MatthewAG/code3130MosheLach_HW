@@ -48,4 +48,9 @@ public class ArrayList3130<E> implements List3130<E> {
     public Iterator<E> iterator() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return null;
+    }
 }

@@ -1,4 +1,4 @@
-package L_hash_tables;
+package L_hash_tables.A_set;
 
 public interface Set3130<E> extends Iterable<E> {
     int size();

@@ -1,6 +1,6 @@
-package L_hash_tables;
+package N_bst.B_map;
 
-public class HashMap3130<K, V> implements Map3130<K, V> {
+public class TreeMap3130<K, V> implements NavigableMap3130<K, V> {
     @Override
     public int size() {
         return 0;
