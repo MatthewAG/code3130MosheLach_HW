@@ -4,8 +4,8 @@ package J_stack_queue_deque.C_deque;
 public class ArrayDeque3130<E> implements Deque3130<E> {
     // MAIN METHOOD . \n
 
-    //public static void main(String[] args)
-    //{}
+    public static void main(String[] args)
+    {}
 
     // ADDED ITEMS
 
