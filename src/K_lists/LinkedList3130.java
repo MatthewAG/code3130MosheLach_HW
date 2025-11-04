@@ -6,6 +6,17 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 // TODO for homework
+// Required representation: chain of doubly-linked nodes.
+// There should be a head pointer, a tail pointer, and an int size.
+// Required method running times:
+// - isEmpty, size, addFirst, addLast, getFirst, getLast, removeFirst, removeLast: O(1)
+// - add, remove, get, set: O(n), but at most n/2 "hops" (i.e. going from node to node.next,
+//   or from node to node.previous)
+// - indexOf, lastIndexOf, toString: O(n)
+// - sort: O(n log n) [use as much memory as you want]
+// - iterator: O(1).
+// The methods next() and hasNext() of Iterator returned by iterator() should run in O(1) time.
+// The Iterator does not need to have a remove() method.
 public class LinkedList3130<E> implements Deque3130<E>, List3130<E> {
     @Override
     public boolean isEmpty() {
@@ -83,8 +94,8 @@ public class LinkedList3130<E> implements Deque3130<E>, List3130<E> {
 
     @Override
     public void sort(Comparator<? super E> comparator) {
-        // copy the list into an array, sort the array,
-        // and then copy the array back into the list
+        // copy the elements into an array, sort the array,
+        // and then copy the sorted elements back into the list
     }
 
     @Override
