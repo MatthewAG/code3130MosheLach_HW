@@ -97,9 +97,9 @@ public class ArrayQueue3130<E> implements Queue3130<E> {
             newArray[i] = elements[(indexOfFirst + i) % elements.length];
         }
 
-        elements = newArray;
         indexOfLast = size() - 1;
         indexOfFirst = 0;
+        elements = newArray;
     }
 
     @Override
