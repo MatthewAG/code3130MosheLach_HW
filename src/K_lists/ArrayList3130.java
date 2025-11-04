@@ -1,8 +1,16 @@
 package K_lists;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 
-// most of this was laredy done in earlier homework assignments
+// most of this was largely done in earlier homework assignments
+// running times:
+// O(n): add, remove, indexOf, lastIndexOf, toString
+// O(1): size, get, set, iterator, the Iterator's next and hsaNext
+// O(n log n): sort
 public class ArrayList3130<E> implements List3130<E> {
     private E[] elements;
     private int size = 0;
@@ -25,17 +33,46 @@ public class ArrayList3130<E> implements List3130<E> {
 
     @Override
     public void add(int index, E element) {
+        Objects.checkIndex(index, size + 1);
 
+        if (size == elements.length)  {
+            grow();
+        }
+
+        // shift elements after index one unit to the right
+        for (int i = size; i > index; i--) {
+            elements[i] = elements[i - 1];
+        }
+
+        elements[index] = element;
+        size++;
+    }
+
+    private void grow() {
+        elements = Arrays.copyOf(elements, 2 * elements.length + 1);
     }
 
     @Override
     public E remove(int index) {
-        return null;
+        Objects.checkIndex(index, size);
+        E element = elements[index];
+
+        // shift the elements after index one unit to the left
+        for (int i = index; i < size - 1; i++) {
+            elements[i] = elements[i + 1];
+        }
+
+        elements[size - 1] = null; // optional
+        size--;
+        return element;
     }
 
     @Override
     public E get(int index) {
-        Objects.checkIndex(index, size);
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        // Objects.checkIndex(index, size);
         return elements[index];
     }
 
