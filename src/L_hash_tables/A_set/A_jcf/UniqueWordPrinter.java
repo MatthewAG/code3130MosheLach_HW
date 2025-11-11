@@ -1,5 +1,5 @@
-// prints the unique words from the file,
-// ordered by the order in which they were first seen in the file
+// Prints the unique words from the file, ordered by
+// the order in which they were first seen in the file.
 void main() throws FileNotFoundException {
     String filename = IO.readln("filename? ");
     Scanner scanner = new Scanner(new File(filename));

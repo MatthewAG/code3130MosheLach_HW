@@ -1,6 +1,7 @@
 package L_hash_tables.A_set.B_our;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 
 public class ChainingHashSet3130<E> implements Set3130<E> {
     // Representation: a hash table.
@@ -8,31 +9,17 @@ public class ChainingHashSet3130<E> implements Set3130<E> {
     // each index, we have a chain of linked nodes for all
     // the elements that belong at that index.
 
-    /* private */ static class Node<E> {
-        E data;
-        Node<E> next;
-
-        Node(E data, Node<E> next) {
-            this.data = data;
-            this.next = next;
-        }
-    }
-
-    private Node<E>[] table;
-    private int size = 0; // the number of elements the set currently contains
+    private LinkedList<E>[] table;
+    private int size = 0;
     private final double maxLoadFactor;
-    // maxLoadFactor is the highest level that this set's load factor can go.
-    // when the current load factor goes above this level, we resize.
+    // the highest level that this set's load factor can go.
+    // when the load factor goes above this level, we resize
 
     private static final int DEFAULT_INITIAL_CAPACITY = 10;
     private static final double DEFAULT_MAX_LOAD_FACTOR = 0.75;
 
     public ChainingHashSet3130() {
-        this(DEFAULT_INITIAL_CAPACITY);
-    }
-
-    public ChainingHashSet3130(int initialCapacity) {
-        this(initialCapacity, DEFAULT_MAX_LOAD_FACTOR);
+        this(DEFAULT_INITIAL_CAPACITY, DEFAULT_MAX_LOAD_FACTOR);
     }
 
     @SuppressWarnings("unchecked")
@@ -41,7 +28,7 @@ public class ChainingHashSet3130<E> implements Set3130<E> {
             throw new IllegalArgumentException("max load factor must be positive");
         }
 
-        table = (Node<E>[]) new Node[initialCapacity];
+        table = (LinkedList<E>[]) new LinkedList[initialCapacity];
         this.maxLoadFactor = maxLoadFactor;
     }
 
@@ -51,30 +38,67 @@ public class ChainingHashSet3130<E> implements Set3130<E> {
     }
 
     @Override
-    public boolean add(E e) {
-        return false;
-    }
+    public boolean add(E element) {
+        if (contains(element)) {
+            return false;
+        }
 
-    // growAndRehash
+        int index = hash(element);
 
-    @Override
-    public boolean contains(Object o) {
-        return false;
+        if (table[index] == null) {
+            table[index] = new LinkedList<>();
+        }
+
+        table[index].add(element);
+        size++;
+
+        if (loadFactor() > maxLoadFactor) {
+            grow();
+        }
+
+        return true;
     }
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        int index = hash(o);
+
+        if (table[index] == null) {
+            return false;
+        } else if (!table[index].contains(o)) {
+            return false;
+        } else {
+            table[index].remove(o);
+            size--;
+            return true;
+        }
     }
 
     @Override
-    public Iterator<E> iterator() {
-        return null;
+    public boolean contains(Object o) {
+        int index = hash(o);
+        return table[index] != null && table[index].contains(o);
     }
 
     @Override
     public String toString() {
-        return null;
+        StringBuilder sb = new StringBuilder("[");
+        int count = 0;
+
+        for (LinkedList<E> bucket : table) {
+            if (bucket != null) {
+                for (E element : bucket) {
+                    sb.append(element);
+                    count++;
+
+                    if (count < size) {
+                        sb.append(", ");
+                    }
+                }
+            }
+        }
+
+        return sb.append("]").toString();
     }
 
     // given any object, returns the index at which the object belongs
@@ -85,5 +109,25 @@ public class ChainingHashSet3130<E> implements Set3130<E> {
     // returns the current load factor
     private double loadFactor() {
         return size / (double) table.length;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void grow() {
+        LinkedList<E>[] oldTable = table;
+        table = (LinkedList<E>[]) new LinkedList[2 * table.length + 1];
+        size = 0;
+
+        for (LinkedList<E> oldBucket : oldTable) {
+            if (oldBucket != null) {
+                for (E element : oldBucket) {
+                    add(element);
+                }
+            }
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return null;
     }
 }

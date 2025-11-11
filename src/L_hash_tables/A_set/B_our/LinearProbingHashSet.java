@@ -44,11 +44,6 @@ public class LinearProbingHashSet<E> implements Set3130<E> {
     }
 
     @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    @Override
     public boolean add(E element) {
         if (contains(element)) {
             return false;
